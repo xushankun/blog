@@ -12,12 +12,6 @@ date: 2019-02-12 09:31:00
 <!-- more -->
 PS：这篇文章所有执行命令的地方都是在管理员模式下进行，即打开cmd，Git Bash客户端用管理员身份运行程序。
 
-### 取消全局设置
-```
-git config --global user.name "your_name"
-git config --global user.email  "your_email"
-
-```
 
 ### 生成github.com对应的私钥公钥
 执行命令 ssh-keygen -t rsa -C email 创建github对应的sshkey，命名为id_rsa_github，密码 123456【如下图】
