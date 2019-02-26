@@ -35,22 +35,25 @@ date: 2018-09-12 13:20:00
 		npm login
         
 ![release-npm-3](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-3.png)
-
-		npm publish		//  发布成功如下图【每次发布版本号不能重复】
-     // + 包名@版本号
+```
+npm publish		// 发布成功如下图【每次发布版本号不能重复】
+// + 包名@版本号
+```
     
 ![release-npm-4](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-4.png)
 
 ###	移除包
-		npm unpublish 	// 同发布
-     // - 包名@版本号
-     
+```
+npm unpublish 	// 同发布
+// - 包名@版本号
+``` 
      
 ###	接下来 我们  就可以【npm install 包名称】去安装包了
 **官网查询结果如下图：**
 ![release-npm-5](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-5.png)
 
-
-		-g	全局
-		--save	本地安装写进package.json  的  dependencies
-		--save-dev	本地安装写进package.json 的 devDependencies
+```
+-g	全局
+--save	本地安装写进package.json  的  dependencies
+--save-dev	本地安装写进package.json 的 devDependencies
+```
