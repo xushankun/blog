@@ -2,7 +2,7 @@ title: git ssh 添加
 tags:
   - git
 categories:
-  - 前端
+  - 工具
 author: shankun
 date: 2018-07-12 20:03:00
 ---

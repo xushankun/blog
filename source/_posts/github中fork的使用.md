@@ -1,9 +1,11 @@
 title: github中fork的使用
 author: Xu Shan Kun
 tags:
+  - git
   - Github
 categories:
-  - Github
+  - 工具
+  - ''
 date: 2018-12-13 10:01:00
 ---
 在Github上如果看到有很不错的项目和作品，一般我们可以进行三种操作：那就是**watch**，**star**和**fork**

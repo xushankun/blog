@@ -4,7 +4,7 @@ tags:
   - node
   - npm
 categories:
-  - 前端
+  - 工具
 date: 2018-09-12 13:20:00
 ---
 ###	首先去官网注册npm帐号

@@ -3,7 +3,8 @@ author: Xu Shan Kun
 tags:
   - git
 categories:
-  - 前端
+  - 工具
+  - ''
 date: 2018-03-09 10:02:00
 ---
 ##	git四个阶段的撤销更改

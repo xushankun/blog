@@ -4,7 +4,8 @@ tags:
   - node
   - npm
 categories:
-  - 前端
+  - 工具
+  - ''
 date: 2018-03-07 12:10:00
 ---
 ###	npm、cnpm 安装
