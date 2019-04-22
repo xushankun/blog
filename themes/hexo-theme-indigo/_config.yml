@@ -21,6 +21,7 @@ menu:
     text: 分类
     url: /categories
   github:
+    text: 社交
     url: https://github.com/xushankun
     target: _blank
 #  weibo:
