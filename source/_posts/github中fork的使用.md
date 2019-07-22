@@ -9,13 +9,13 @@ categories:
 date: 2018-12-13 10:01:00
 ---
 在Github上如果看到有很不错的项目和作品，一般我们可以进行三种操作：那就是**watch**，**star**和**fork**
-
+<!-- more -->
 -	watch就是关注repo的动态
 -	star则类似社交网站的点赞，收藏，like等
 -	fork就是讲别人的项目拷贝一份给自己，new一个新的分支（Branch）出来，你push的改进和补充则又由原作者选择是否接受。【更改别人项目的bug 或者 优化别人的项目的常用操作】
 
 如下图所示：
-<!-- more -->
+
 ![github-fork1](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/github-fork/github-fork1.png)
 
 ###	第一步：fork后 直接是以下界面【github的操作】

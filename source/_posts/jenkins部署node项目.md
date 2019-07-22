@@ -12,7 +12,7 @@ date: 2019-03-26 17:19:00
 ### 目标
 -	centos搭建jenkins
 -	实现github提交代码后自动部署项目
-
+<!-- more -->
 ### git安装
 1. 下载git命令:wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.gz          //选择一个目录后执行，我的是/usr/local/git
 2. 解压git的tar包命令: tar -xzvf git-2.8.3.tar.gz  ，进入解压后的文件夹:cd git-2.8.3

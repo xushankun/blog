@@ -11,7 +11,7 @@ date: 2019-07-16 09:52:00
 #### 注册宝塔账号并安装宝塔
 - [注册账号地址](https://www.bt.cn/register.html)【后面会用到】
 - [github链接](https://github.com/aaPanel/BaoTa)
-
+<!-- more -->
 centos使用如下命令安装：
 
 ```

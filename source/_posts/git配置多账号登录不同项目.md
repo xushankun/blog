@@ -8,8 +8,9 @@ date: 2019-02-12 09:31:00
 ---
 ### 需求
 我们做项目时会有自己的github账号，和公司的git账号。
-本文以配置github.com账号、码云账号以及公司git账号，即在Windows环境下配置Git多账号的使用
 <!-- more -->
+本文以配置github.com账号、码云账号以及公司git账号，即在Windows环境下配置Git多账号的使用
+
 
 
 ### 生成github.com对应的私钥公钥

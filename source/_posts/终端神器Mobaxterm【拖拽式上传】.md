@@ -12,6 +12,7 @@ date: 2019-03-07 15:45:00
 ---
 ### 给大佬递上链接
 ┏ (゜ω゜)=☞：[百度云](https://pan.baidu.com/s/1CBzMMWiDZvwL8Lg4Q8RbRw)，提取码：ans9
+<!-- more -->
 ### 准备连接步骤【看图说话】
 1.点击session
 ![](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/mobaxterm/mobaxterm1.png)
