@@ -8,8 +8,6 @@
   "scripts": {
     "dev": "hexo server",
     "clean": "hexo clean",
-    "g": "hexo g",
-    "d": "hexo d",
     "release": "hexo g -d"
   },
   "dependencies": {

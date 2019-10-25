@@ -25,22 +25,22 @@ date: 2018-09-12 13:20:00
 回车	初始化OK 【文件夹shankun下多了一个文件package.json】
 
 ###	当前目录下新建index.js【初始化时指定的入口文件】
-![release-npm-1](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-1.png)
+![release-npm-1](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/npmImg/release-npm-1.png)
 
 ###	README.md  项目描述文件【非必选，不过作为一个专业的开发，你懂的】
-![release-npm-2](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-2.png)
+![release-npm-2](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/npmImg/release-npm-2.png)
 
 ###	准备发布
 		cd shankun
 		npm login
         
-![release-npm-3](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-3.png)
+![release-npm-3](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/npmImg/release-npm-3.png)
 ```
 npm publish		// 发布成功如下图【每次发布版本号不能重复】
 // + 包名@版本号
 ```
     
-![release-npm-4](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-4.png)
+![release-npm-4](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/npmImg/release-npm-4.png)
 
 ###	移除包
 ```
@@ -50,7 +50,7 @@ npm unpublish 	// 同发布
      
 ###	接下来 我们  就可以【npm install 包名称】去安装包了
 **官网查询结果如下图：**
-![release-npm-5](https://raw.githubusercontent.com/xushankun/workspace/master/blogImg/npmImg/release-npm-5.png)
+![release-npm-5](https://shankun-1257055090.cos.ap-chengdu.myqcloud.com/blog/npmImg/release-npm-5.png)
 
 ```
 -g	全局
