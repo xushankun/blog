@@ -2,9 +2,10 @@
   giscus 评论组件
   配置项来自 hugo.toml params.giscus
   启用步骤：
-    1. 访问 https://giscus.app，按提示选择 xushankun/hexoBlog 仓库
-    2. 把页面给出的 data-repo-id 和 data-category-id 填入 hugo.toml params.giscus
+    1. 访问 https://giscus.app，按提示选择 xushankun/blog 仓库
+    2. 把页面给出的 data-repo-id 和 data-category-id 填入 hugo.toml [params.giscus]
     3. 确保仓库已启用 Discussions（Settings → Features → Discussions）
+    4. 注意: repoId 和 categoryId 必须填写，否则评论框不会显示
 */ -}}
 
 {{- with .Site.Params.giscus }}

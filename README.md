@@ -7,7 +7,7 @@
 ## 🌳 项目结构
 
 ```
-hexoBlog/
+blog/
 ├── archetypes/         # 新文章模板
 │   └── default.md
 ├── content/            # 所有内容
@@ -36,7 +36,7 @@ hexoBlog/
 ## 🚀 部署流程
 
 ```
-hexoBlog (源码, master)
+blog (源码, master)
     │  push to master
     ▼
 GitHub Actions
@@ -80,7 +80,7 @@ hugo version
 ### 2. 克隆 & 拉取主题
 
 ```bash
-git clone --recurse-submodules git@github.com:xushankun/hexoBlog.git
+git clone --recurse-submodules git@github.com:xushankun/blog.git
 # 已克隆过的项目：
 git submodule update --init --recursive
 ```
@@ -115,11 +115,11 @@ git push origin master
 
 由于使用了**同仓库 Pages from Actions**，没有 token 配置环节，只需要在 GitHub 后台启用一下：
 
-1. 进入 `xushankun/hexoBlog` → **Settings** → **Pages**
+1. 进入 `xushankun/blog` → **Settings** → **Pages**
 2. **Source** 选 `GitHub Actions`
 3. 在 **Custom domain** 填 `shankun.top`，勾选 `Enforce HTTPS`
 
-> 因为 user-page 仓 `xushankun.github.io` 也绑定了 `shankun.top`，需要先在那边解绑域名（Settings → Pages → 清空 Custom domain），再到 hexoBlog 这边绑定，否则 GitHub 不允许同时绑两个仓库。
+> 因为 user-page 仓 `xushankun.github.io` 也绑定了 `shankun.top`，需要先在那边解绑域名（Settings → Pages → 清空 Custom domain），再到 blog 这边绑定，否则 GitHub 不允许同时绑两个仓库。
 
 ---
 
@@ -127,7 +127,7 @@ git push origin master
 
 `layouts/partials/comments.html` 已写好，只差填两个 ID：
 
-1. 在 `xushankun/hexoBlog` 仓库启用 **Discussions**：Settings → Features → Discussions ✅
+1. 在 `xushankun/blog` 仓库启用 **Discussions**：Settings → Features → Discussions ✅
 2. 在 Discussions 中创建一个 category，建议名字叫 `Comments`，type 选 `Announcement`
 3. 安装 [giscus app](https://github.com/apps/giscus) 到该仓库
 4. 打开 https://giscus.app ，按表单选择仓库、category、mapping(pathname)

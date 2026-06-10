@@ -31,7 +31,7 @@ cover:
   relative: false
   hidden: true
 editPost:
-  URL: "https://github.com/xushankun/hexoBlog/tree/master/content"
+  URL: "https://github.com/xushankun/blog/tree/master/content"
   Text: "在 GitHub 编辑"
   appendFilePath: true
 ---

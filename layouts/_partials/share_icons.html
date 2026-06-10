@@ -1,0 +1,111 @@
+{{- $pageurl := .Permalink }}
+{{- $title := .Title }}
+
+<ul class="share-buttons">
+    {{- /* 微信分享 - 生成二维码 */}}
+    <li>
+        <a href="javascript:void(0);" rel="noopener noreferrer" aria-label="分享到微信"
+            onclick="document.getElementById('wechatQrModal').style.display='flex'" title="微信扫一扫分享">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path d="M321.07,189.26c-50.82,0 -91.97,37.3 -91.97,83.35c0,83.35 91.97,141.65 183.95,141.65c11.65,0 22.99,-1.67 33.99,-4.33c-18.32,18.32 -42.99,25.66 -74.65,27.66l-55.99,31.66l28.33,-31.66c-71.32,0 -117.63,-41.33 -117.63,-106.98c0,-24.99 10.31,-47.98 27.32,-65.32c-27.32,5.99 -47.32,25.32 -47.32,48.98c0,33.33 25.33,59.99 57.98,71.99l-13.33,15.33c-41.33,-3.67 -72.65,-36.33 -72.65,-75.99c0,-34.33 20.33,-65.32 56.66,-85.99l0.66,-18.99c-43.66,13.67 -73.32,53.66 -73.32,100.99c0,75.33 72.65,131.66 165.29,131.66c7,0 14,-0.33 20.66,-1.33l54.66,30.99l-27.99,-31.32c44.32,-3 83.32,-33 94.32,-72.32c3.33,-12.67 5.33,-26.33 5.33,-40.33c0,-84.67 -71.99,-153.32 -160.65,-153.32zM140.67,154.98c-27.66,0 -49.99,20 -49.99,44.67c0,14 7,26.33 17.33,34.33l-7.66,7.67c-24,-3 -41.33,-20 -41.33,-40.67c0,-18.33 11,-35.33 30.66,-46.66l0.33,-10.34c-27.33,7.67 -46.66,31.67 -46.66,59.34c0,41.99 41.33,73.66 93.99,73.66c3.66,0 7.66,-0.33 11.33,-0.67l34.33,19.34l-18,-19.67c21,0 44.67,-16.33 55.66,-34.33c-43.33,1 -81.33,-31.33 -81.33,-72.33c0,-47.66 42.33,-86.33 94.33,-86.33c6.33,0 12.66,0.67 18.66,2c-10.33,-14 -27.66,-23.33 -47.33,-23.33zM190.33,204.31c-5.67,0 -10,4.33 -10,10c0,5.67 4.33,10 10,10c5.67,0 10,-4.33 10,-10c0,-5.67 -4.33,-10 -10,-10zM241.67,204.31c-5.67,0 -10,4.33 -10,10c0,5.67 4.33,10 10,10c5.67,0 10,-4.33 10,-10c0,-5.67 -4.33,-10 -10,-10zM286.67,279.3c-5.66,0 -10,4.33 -10,10c0,5.67 4.34,10 10,10c5.66,0 10,-4.33 10,-10c0,-5.67 -4.34,-10 -10,-10zM341.67,279.3c-5.66,0 -10,4.33 -10,10c0,5.67 4.34,10 10,10c5.66,0 10,-4.33 10,-10c0,-5.67 -4.34,-10 -10,-10z"/>
+            </svg>
+        </a>
+    </li>
+
+    {{- /* 复制链接 */}}
+    <li>
+        <a href="javascript:void(0);" rel="noopener noreferrer" aria-label="复制链接"
+            onclick="copyToClipboard('{{ $pageurl }}')" title="复制文章链接">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path d="M459.65,52.37c-69.77,-69.76 -183.1,-69.76 -252.87,0l-26.57,26.58l47.42,47.42l26.57,-26.58c43.58,-43.57 114.44,-43.57 158.02,0c43.58,43.58 43.58,114.44 0,158.02l-26.58,26.57l47.42,47.42l26.58,-26.57c69.76,-69.77 69.76,-183.1 0.01,-252.87zM342.61,190.14l-152.47,152.47l-20.75,-20.75l152.47,-152.47l20.75,20.75zM52.35,459.63c69.77,69.77 183.1,69.77 252.87,0l26.57,-26.57l-47.42,-47.42l-26.57,26.57c-43.58,43.58 -114.44,43.58 -158.02,0c-43.58,-43.57 -43.58,-114.44 0,-158.02l26.57,-26.57l-47.42,-47.42l-26.57,26.57c-69.77,69.77 -69.77,183.11 -0.01,252.86z"/>
+            </svg>
+        </a>
+    </li>
+
+    {{- /* 文本分享 (Web Share API) */}}
+    <li>
+        <a href="javascript:void(0);" rel="noopener noreferrer" aria-label="文本分享"
+            id="btn-text-share" title="更多方式分享">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path d="M256,64c105.88,0 192,86.12 192,192c0,105.88 -86.12,192 -192,192c-105.88,0 -192,-86.12 -192,-192c0,-105.88 86.12,-192 192,-192zM256,32c-123.71,0 -224,100.29 -224,224c0,123.71 100.29,224 224,224c123.71,0 224,-100.29 224,-224c0,-123.71 -100.29,-224 -224,-224zM233.38,309.63c0,-11.76 9.51,-21.26 21.26,-21.26c11.76,0 21.26,9.51 21.26,21.26c0,11.76 -9.51,21.26 -21.26,21.26c-11.76,0 -21.26,-9.51 -21.26,-21.26zM209.07,209.07c2.55,-10.29 5.88,-18.63 13.24,-25.98c9.31,-9.31 22.55,-14.7 36.28,-14.7c27.45,0 44.61,17.16 44.61,38.24c0,19.12 -10.78,30.39 -24.51,39.22l-0.98,0.49c-13.73,7.35 -16.67,13.73 -16.67,23.53v0.49h-27.45c-0.49,-19.12 3.43,-26.96 14.71,-34.32c9.31,-5.88 14.22,-11.76 14.22,-20.1c0,-9.31 -8.33,-14.22 -15.69,-14.22c-7.36,0 -12.75,4.41 -14.71,10.79l-25.05,-3.44z"/>
+            </svg>
+        </a>
+    </li>
+</ul>
+
+{{- /* 微信二维码弹窗 */}}
+<div id="wechatQrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+    background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;"
+    onclick="if(event.target===this)this.style.display='none'" role="dialog" aria-label="微信分享二维码">
+    <div style="background:var(--theme); border-radius:16px; padding:28px 24px 20px;
+        text-align:center; position:relative; min-width:260px; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+        <button onclick="document.getElementById('wechatQrModal').style.display='none'"
+            style="position:absolute; top:8px; right:14px; background:none; border:none;
+            font-size:22px; cursor:pointer; color:var(--secondary); padding:4px 8px; line-height:1;"
+            aria-label="关闭">&times;</button>
+        <p style="margin:0 0 16px 0; font-size:14px; color:var(--secondary);">微信扫一扫 分享文章</p>
+        <img id="wechatQrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ $pageurl }}" 
+            alt="微信分享二维码" width="200" height="200" 
+            style="display:block; margin:0 auto; border-radius:8px;"
+            onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><rect fill=%22%23f0f0f0%22 width=%22200%22 height=%22200%22 rx=%228%22/><text x=%22100%22 y=%22100%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2214%22 fill=%22%23999%22>QR 加载失败</text></svg>'">
+        <p style="margin:12px 0 0 0; font-size:13px; color:var(--secondary); word-break:break-all;">{{ $pageurl }}</p>
+    </div>
+</div>
+
+{{- /* 复制链接 + 文本分享 JS */}}
+<script>
+(function() {
+    window.copyToClipboard = function(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+                showToast("链接已复制");
+            }).catch(function() {
+                fallbackCopy(text);
+            });
+        } else {
+            fallbackCopy(text);
+        }
+    };
+
+    function fallbackCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.cssText = "position:fixed;left:-9999px;top:-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); showToast("链接已复制"); }
+        catch(e) { prompt("请手动复制链接:", text); }
+        document.body.removeChild(ta);
+    }
+
+    function showToast(msg) {
+        var t = document.createElement("div");
+        t.textContent = msg;
+        t.style.cssText = "position:fixed;bottom:30px;left:50%;transform:translateX(-50%);"
+            + "background:var(--content);color:var(--theme);padding:10px 24px;"
+            + "border-radius:20px;font-size:14px;z-index:10000;"
+            + "box-shadow:0 4px 16px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s;";
+        document.body.appendChild(t);
+        requestAnimationFrame(function() { t.style.opacity = "1"; });
+        setTimeout(function() {
+            t.style.opacity = "0";
+            setTimeout(function() { document.body.removeChild(t); }, 300);
+        }, 1800);
+    }
+
+    var shareBtn = document.getElementById("btn-text-share");
+    if (shareBtn) {
+        shareBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            var url = "{{ $pageurl }}";
+            var title = "{{ $title }}";
+            if (navigator.share) {
+                navigator.share({ title: title, url: url }).catch(function(){});
+            } else {
+                copyToClipboard(title + " - " + url);
+            }
+        });
+        shareBtn.removeAttribute("onclick");
+    }
+})();
+</script>

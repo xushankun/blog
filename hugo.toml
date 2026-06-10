@@ -48,20 +48,26 @@ pagination.pagerSize = 10
   showtoc = true
   tocopen = false
 
-  [params.giscus]
-    repo = "xushankun/hexoBlog"
-    repoId = ""              # 在 https://giscus.app 启用后填入
-    category = "Comments"    # 在 Discussions 创建同名 category
-    categoryId = ""          # 在 https://giscus.app 启用后填入
-    mapping = "pathname"
-    strict = "0"
-    reactionsEnabled = "1"
-    emitMetadata = "0"
-    inputPosition = "bottom"
-    theme = "preferred_color_scheme"
-    lang = "zh-CN"
-    loading = "lazy"
-    crossorigin = "anonymous"
+# giscus 评论配置 — 取消下方注释并填入 repoId / categoryId 即可启用
+# 启用步骤:
+#   1. 打开 https://giscus.app
+#   2. 填入仓库名 xushankun/blog
+#   3. 页面会自动生成 repo / repoId / categoryId，复制填入下方
+#   4. 确保仓库 Settings → Features → Discussions 已勾选
+#  [params.giscus]
+#    repo = "xushankun/blog"
+#    repoId = ""
+#    category = "Announcements"
+#    categoryId = ""
+#    mapping = "pathname"
+#    strict = "0"
+#    reactionsEnabled = "1"
+#    emitMetadata = "0"
+#    inputPosition = "bottom"
+#    theme = "preferred_color_scheme"
+#    lang = "zh-CN"
+#    loading = "lazy"
+#    crossorigin = "anonymous"
 
   [params.homeInfoParams]
     Title = "Hi there \U0001F44B"
