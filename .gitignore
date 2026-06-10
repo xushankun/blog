@@ -1,9 +1,18 @@
+# OS
 .DS_Store
 Thumbs.db
-db.json
 *.log
-node_modules/
-public/
-.deploy*/
+
+# Editor
 .idea/
 .vscode/
+
+# Hugo
+public/
+resources/
+.hugo_build.lock
+
+# 旧 Hexo 遗留（保留以防本地切换分支）
+db.json
+node_modules/
+.deploy*/
