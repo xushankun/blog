@@ -1,9 +1,15 @@
-name: Deploy Hugo site to xushankun.github.io
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
     branches:
       - master
+    paths-ignore:
+      - "README.md"
+      - ".workbuddy/**"
+      - "scripts/**"
+      - ".gitignore"
+      - "LICENSE"
   workflow_dispatch:
 
 # 串行执行，避免并发部署冲突
@@ -11,71 +17,73 @@ concurrency:
   group: "pages-deploy"
   cancel-in-progress: false
 
+# 同仓库 Pages 部署所需权限（不再需要 PAT）
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 env:
-  HUGO_VERSION: 0.147.7
+  HUGO_VERSION: "0.147.7"
 
 jobs:
   build:
     name: Build Hugo site
     runs-on: ubuntu-latest
     steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb \
-            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
-          hugo version
-
       - name: Checkout (with submodules)
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
 
+      - name: Setup Hugo (extended)
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+
+      - name: Print Hugo version
+        run: hugo version
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        with:
+          path: |
+            resources
+            .hugo_build.lock
+          key: hugo-${{ runner.os }}-${{ hashFiles('hugo.toml', 'content/**', 'layouts/**', 'static/**', 'themes/**') }}
+          restore-keys: |
+            hugo-${{ runner.os }}-
+
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
-          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           TZ: Asia/Shanghai
         run: |
           hugo \
             --gc \
             --minify \
-            --baseURL "https://shankun.top/"
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-      - name: Upload public artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: site-public
-          path: public
-          retention-days: 1
+          path: ./public
 
   deploy:
-    name: Deploy to xushankun.github.io
+    name: Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download built site
-        uses: actions/download-artifact@v4
-        with:
-          name: site-public
-          path: public
-
-      - name: Deploy to external Pages repo
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          # 使用 PAT (Personal Access Token) 跨仓库部署
-          # 在本仓库 Settings → Secrets and variables → Actions 中添加 PAGES_DEPLOY_TOKEN
-          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-          external_repository: xushankun/xushankun.github.io
-          publish_branch: master
-          publish_dir: ./public
-          cname: shankun.top
-          commit_message: "deploy: ${{ github.event.head_commit.message }}"
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-          force_orphan: true
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

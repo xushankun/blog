@@ -1,0 +1,46 @@
+{{- /*
+  giscus 评论组件
+  配置项来自 hugo.toml params.giscus
+  启用步骤：
+    1. 访问 https://giscus.app，按提示选择 xushankun/hexoBlog 仓库
+    2. 把页面给出的 data-repo-id 和 data-category-id 填入 hugo.toml params.giscus
+    3. 确保仓库已启用 Discussions（Settings → Features → Discussions）
+*/ -}}
+
+{{- with .Site.Params.giscus }}
+<div id="giscus-container" style="margin-top: 2rem;"></div>
+
+<script>
+(function () {
+  var script = document.createElement("script");
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute("data-repo", "{{ .repo }}");
+  script.setAttribute("data-repo-id", "{{ .repoId }}");
+  script.setAttribute("data-category", "{{ .category }}");
+  script.setAttribute("data-category-id", "{{ .categoryId }}");
+  script.setAttribute("data-mapping", "{{ default "pathname" .mapping }}");
+  script.setAttribute("data-strict", "{{ default "0" .strict }}");
+  script.setAttribute("data-reactions-enabled", "{{ default "1" .reactionsEnabled }}");
+  script.setAttribute("data-emit-metadata", "{{ default "0" .emitMetadata }}");
+  script.setAttribute("data-input-position", "{{ default "bottom" .inputPosition }}");
+  script.setAttribute("data-theme", "{{ default "preferred_color_scheme" .theme }}");
+  script.setAttribute("data-lang", "{{ default "zh-CN" .lang }}");
+  script.setAttribute("data-loading", "{{ default "lazy" .loading }}");
+  script.crossOrigin = "{{ default "anonymous" .crossorigin }}";
+  script.async = true;
+  document.getElementById("giscus-container").appendChild(script);
+
+  // 跟随 PaperMod 的主题切换实时变更 giscus 主题
+  var observer = new MutationObserver(function () {
+    var iframe = document.querySelector("iframe.giscus-frame");
+    if (!iframe) return;
+    var isDark = document.body.classList.contains("dark");
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: isDark ? "dark" : "light" } } },
+      "https://giscus.app"
+    );
+  });
+  observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+})();
+</script>
+{{- end }}

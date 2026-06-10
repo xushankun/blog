@@ -42,11 +42,26 @@ pagination.pagerSize = 10
   UseHugoToc = true
   disableSpecial1stPost = false
   disableScrollToTop = false
-  comments = false
+  comments = true
   hidemeta = false
   hideSummary = false
   showtoc = true
   tocopen = false
+
+  [params.giscus]
+    repo = "xushankun/hexoBlog"
+    repoId = ""              # 在 https://giscus.app 启用后填入
+    category = "Comments"    # 在 Discussions 创建同名 category
+    categoryId = ""          # 在 https://giscus.app 启用后填入
+    mapping = "pathname"
+    strict = "0"
+    reactionsEnabled = "1"
+    emitMetadata = "0"
+    inputPosition = "bottom"
+    theme = "preferred_color_scheme"
+    lang = "zh-CN"
+    loading = "lazy"
+    crossorigin = "anonymous"
 
   [params.homeInfoParams]
     Title = "Hi there \U0001F44B"

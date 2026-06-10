@@ -15,7 +15,10 @@ hexoBlog/
 │   ├── about/          # 关于页面
 │   ├── archives.md     # 归档页
 │   └── search.md       # 搜索页
-├── layouts/            # 自定义模板（含 404.html）
+├── layouts/            # 自定义模板
+│   ├── 404.html        # 自定义 404 页面（CSS 3D 动画）
+│   └── partials/
+│       └── comments.html   # giscus 评论组件
 ├── static/             # 静态资源
 │   ├── CNAME           # GitHub Pages 自定义域名
 │   └── baidu_verify_*.html
@@ -34,19 +37,21 @@ hexoBlog/
 
 ```
 hexoBlog (源码, master)
-    │
     │  push to master
     ▼
 GitHub Actions
-    │  1. Install Hugo
-    │  2. hugo --gc --minify
-    │  3. peaceiris/actions-gh-pages
+    │  1. peaceiris/actions-hugo (Hugo 0.147.7 extended)
+    │  2. actions/cache (resources/)
+    │  3. hugo --gc --minify
+    │  4. actions/deploy-pages
     ▼
-xushankun/xushankun.github.io (master 分支, 含 CNAME)
+GitHub Pages (同仓库 Pages from Actions)
     │
     ▼
-GitHub Pages → shankun.top
+shankun.top
 ```
+
+> ✅ 已从「跨仓库 + PAT」简化为「同仓库 Pages from Actions」，**无需任何 token**，不会过期。
 
 ---
 
@@ -55,7 +60,7 @@ GitHub Pages → shankun.top
 ### 1. 安装 Hugo (Extended 版)
 
 ```bash
-# Windows (Chocolatey)
+# Windows
 choco install hugo-extended
 
 # macOS
@@ -65,21 +70,19 @@ brew install hugo
 sudo snap install hugo
 ```
 
-验证版本：
+要求版本 ≥ 0.146.0（PaperMod 主题要求）。
 
 ```bash
 hugo version
-# hugo v0.139.x+extended ...
+# hugo v0.147.x+extended ...
 ```
 
-### 2. 拉取主题
+### 2. 克隆 & 拉取主题
 
 ```bash
-# 首次克隆项目时
+git clone --recurse-submodules git@github.com:xushankun/hexoBlog.git
+# 已克隆过的项目：
 git submodule update --init --recursive
-
-# 如果还没添加 submodule，手动添加：
-git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 ```
 
 ### 3. 启动本地预览
@@ -95,52 +98,48 @@ hugo server -D
 hugo new posts/my-new-article.md
 ```
 
-或手动在 `content/posts/` 下创建 `.md` 文件，front matter 模板：
-
-```yaml
----
-title: "文章标题"
-date: 2026-06-10T10:00:00+08:00
-author: "Xu Shan Kun"
-draft: false
-tags:
-  - "javascript"
-categories:
-  - "前端"
----
-```
-
-正文开头加入 `<!--more-->` 即可控制摘要截断位置。
-
-### 5. 构建静态文件
+archetype 模板已配好 PaperMod 常用字段（封面、TOC、评论开关等）。写完后：
 
 ```bash
-hugo --gc --minify
-# 输出在 ./public 目录
+git add content/posts/my-new-article.md
+git commit -m "post: 文章标题"
+git push origin master
+# 等 1-2 分钟，shankun.top 上线
 ```
+
+正文中加入 `<!--more-->` 控制摘要截断位置。
 
 ---
 
-## 🔐 自动部署配置（一次性）
+## 🔐 首次仓库配置（一次性）
 
-GitHub Actions 已配置好（`.github/workflows/deploy.yml`），但跨仓库部署需要一个 **Personal Access Token (PAT)**。
+由于使用了**同仓库 Pages from Actions**，没有 token 配置环节，只需要在 GitHub 后台启用一下：
 
-### 创建 PAT
+1. 进入 `xushankun/hexoBlog` → **Settings** → **Pages**
+2. **Source** 选 `GitHub Actions`
+3. 在 **Custom domain** 填 `shankun.top`，勾选 `Enforce HTTPS`
 
-1. 打开 https://github.com/settings/tokens
-2. 选择 **Generate new token (classic)**
-3. 勾选权限：`repo`（全部）+ `workflow`
-4. 生成后复制 token
+> 因为 user-page 仓 `xushankun.github.io` 也绑定了 `shankun.top`，需要先在那边解绑域名（Settings → Pages → 清空 Custom domain），再到 hexoBlog 这边绑定，否则 GitHub 不允许同时绑两个仓库。
 
-### 配置 Secret
+---
 
-1. 进入 `xushankun/hexoBlog` 仓库 → **Settings** → **Secrets and variables** → **Actions**
-2. 点击 **New repository secret**
-3. Name: `PAGES_DEPLOY_TOKEN`
-4. Secret: 粘贴上面生成的 PAT
-5. 保存
+## 💬 启用 giscus 评论
 
-之后每次 push 到 master，会自动构建并部署到 `xushankun/xushankun.github.io` 的 master 分支。
+`layouts/partials/comments.html` 已写好，只差填两个 ID：
+
+1. 在 `xushankun/hexoBlog` 仓库启用 **Discussions**：Settings → Features → Discussions ✅
+2. 在 Discussions 中创建一个 category，建议名字叫 `Comments`，type 选 `Announcement`
+3. 安装 [giscus app](https://github.com/apps/giscus) 到该仓库
+4. 打开 https://giscus.app ，按表单选择仓库、category、mapping(pathname)
+5. 把页面给出的 `data-repo-id` 和 `data-category-id` 填入 `hugo.toml`：
+
+```toml
+[params.giscus]
+  repoId = "R_kgDOxxxxxx"          # 填这里
+  categoryId = "DIC_kwDOxxxxxx"    # 填这里
+```
+
+下次 push 自动生效。主题切换（PaperMod 浅/深色）会实时同步给 giscus iframe。
 
 ---
 
@@ -162,10 +161,10 @@ git checkout hexo-backup
 node scripts/migrate-posts.js <hexo_posts_dir> <hugo_posts_dir>
 ```
 
-它会自动：
+自动处理：
 - 添加 Hugo 要求的前导 `---`
-- 把 Hexo 日期格式转为 RFC3339（带时区 `+08:00`）
-- 把 `<!-- more -->` 改为 `<!--more-->`
+- Hexo 日期 → RFC3339（带时区 `+08:00`）
+- `<!-- more -->` → `<!--more-->`
 - 规范化文件名（去除空格）
 - 保留 tags / categories / author
 
@@ -179,45 +178,47 @@ node scripts/migrate-posts.js <hexo_posts_dir> <hugo_posts_dir>
 | 自定义模板    | `themes/<theme>/layout` | `layouts/`                          |
 | Front matter  | 末尾 `---`              | 前后都需 `---`                      |
 | 构建命令      | `hexo g`                | `hugo`                              |
-| 部署命令      | `hexo d`                | GitHub Actions 自动执行             |
+| 部署命令      | `hexo d`                | GitHub Actions（push 即可）         |
 | 摘要标记      | `<!-- more -->`         | `<!--more-->`                       |
 
 ### 性能对比
 
-- Hexo 3.9 构建 24 篇文章 ≈ 5-10s
-- Hugo 构建相同内容 < 100ms（性能提升 50-100 倍）
+| 指标 | Hexo 3.9 | Hugo 0.147 |
+|------|----------|-----------|
+| 构建 24 篇文章 | 5-10s | < 100ms |
+| 本地环境要求 | Node 12 + npm + hexo-cli | 仅 hugo 二进制 |
+| 部署 | 本地构建 + git push | git push（构建在 CI） |
 
 ---
 
-## 🎨 主题
+## 🎨 主题与功能
 
-当前使用 [PaperMod](https://github.com/adityatelange/hugo-PaperMod)，特性：
+当前使用 [PaperMod](https://github.com/adityatelange/hugo-PaperMod)：
 
-- 浅色 / 深色 / 跟随系统 三种主题
+- 浅色 / 深色 / 跟随系统 三种主题（已开启 toggle）
 - 内置搜索（基于 fuse.js）
 - 归档 / 标签 / 分类页面
-- 阅读时间、字数统计
+- 阅读时间、字数统计、面包屑
 - 代码块一键复制
 - TOC 目录
-- 多语言支持
+- giscus 评论（已集成，待启用）
+- 自定义 404（CSS 3D 滚动数字）
 
-更换主题只需修改 `hugo.toml` 中的 `theme` 字段，并把对应主题放到 `themes/` 下。
+更换主题：改 `hugo.toml` 的 `theme` 字段，把对应主题放到 `themes/`。
 
 ---
 
 ## 🆘 回滚到 Hexo
 
-如果出现严重问题，可以快速回滚：
-
 ```bash
-# 1. 切换到备份分支
+# 1. 切到备份分支
 git checkout hexo-backup
 
 # 2. 强制覆盖 master
 git branch -f master hexo-backup
 git push -f origin master
 
-# 3. 在本地恢复 Hexo 环境
+# 3. 本地恢复 Hexo 环境
 npm install
 hexo g -d
 ```
