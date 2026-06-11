@@ -1,0 +1,194 @@
+{{- /* Head custom content area start */ -}}
+{{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
+{{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
+
+<!-- Medium-Zoom CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.css">
+
+<!-- 自定义样式 -->
+<style>
+  /* ========== 固定侧边栏目录样式 ========== */
+  .sidebar-toc {
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    width: 250px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    background: var(--entry);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+  .sidebar-toc-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--primary);
+  }
+
+  .sidebar-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-toc li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar-toc a {
+    display: block;
+    padding: 6px 0;
+    color: var(--secondary);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: color 0.2s;
+    border-left: 3px solid transparent;
+    padding-left: 12px;
+  }
+
+  .sidebar-toc a:hover {
+    color: var(--primary);
+  }
+
+  .sidebar-toc a.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    font-weight: 500;
+  }
+
+  /* 层级缩进 */
+  .sidebar-toc ul ul {
+    padding-left: 16px;
+  }
+
+  .sidebar-toc ul ul a {
+    font-size: 13px;
+  }
+
+  /* 滚动条样式 */
+  .sidebar-toc::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar-toc::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sidebar-toc::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  /* ========== Medium-Zoom 自定义样式 ========== */
+  .medium-zoom-overlay {
+    z-index: 9999;
+  }
+
+  .medium-zoom-image {
+    z-index: 10000;
+  }
+
+  /* ========== 响应式设计 ========== */
+  @media (max-width: 1200px) {
+    .sidebar-toc {
+      width: 220px;
+      right: 10px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-toc {
+      display: none;
+    }
+    
+    /* 移动端显示浮动目录按钮 */
+    .mobile-toc-toggle {
+      display: flex;
+    }
+  }
+
+  /* 移动端浮动目录按钮 */
+  .mobile-toc-toggle {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+  }
+
+  .mobile-toc-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  /* 移动端目录弹出层 */
+  .mobile-toc {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--entry);
+    z-index: 1002;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .mobile-toc.active {
+    display: block;
+  }
+
+  .mobile-toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-toc-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .mobile-toc-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--secondary);
+    padding: 4px 8px;
+  }
+
+  /* ========== 文章内容区域调整 ========== */
+  @media (min-width: 769px) {
+    .post-content {
+      margin-right: 280px;
+    }
+  }
+</style>
+
+{{- /* Head custom content area end */ -}}

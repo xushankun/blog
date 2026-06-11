@@ -1,0 +1,232 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+
+<!-- Medium-Zoom JS -->
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js"></script>
+
+<!-- 自定义功能脚本 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // ========== 1. 外部链接新标签页打开 ==========
+  function handleExternalLinks() {
+    const postContent = document.querySelector('.post-content');
+    if (!postContent) return;
+    
+    const links = postContent.querySelectorAll('a');
+    links.forEach(link => {
+      // 跳过锚点链接和站内链接
+      if (link.href.startsWith('#') || link.href.startsWith('javascript:')) return;
+      
+      // 检查是否是外部链接
+      if (link.hostname && link.hostname !== window.location.hostname) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  }
+
+  // ========== 2. 图片灯箱效果 (Medium-Zoom) ==========
+  function initImageZoom() {
+    if (typeof mediumZoom === 'undefined') {
+      console.warn('medium-zoom library not loaded');
+      return;
+    }
+    
+    const postContent = document.querySelector('.post-content');
+    if (!postContent) return;
+    
+    const images = postContent.querySelectorAll('img');
+    if (images.length === 0) return;
+    
+    mediumZoom(images, {
+      background: 'rgba(0, 0, 0, 0.9)',
+      margin: 24,
+      scrollOffset: 40,
+      container: {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+      }
+    });
+  }
+
+  // ========== 3. 固定侧边栏目录 ==========
+  function initSidebarToc() {
+    const postContent = document.querySelector('.post-content');
+    if (!postContent) return;
+    
+    // 获取所有标题 (h2, h3, h4)
+    const headings = postContent.querySelectorAll('h2, h3, h4');
+    if (headings.length < 2) return; // 标题太少不显示目录
+    
+    // 创建侧边栏目录容器
+    const sidebarToc = document.createElement('div');
+    sidebarToc.className = 'sidebar-toc';
+    sidebarToc.innerHTML = '<div class="sidebar-toc-title">目录</div><ul></ul>';
+    
+    const tocList = sidebarToc.querySelector('ul');
+    
+    // 生成目录项
+    headings.forEach((heading, index) => {
+      // 确保标题有ID
+      if (!heading.id) {
+        heading.id = 'heading-' + index;
+      }
+      
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.textContent = heading.textContent;
+      a.dataset.level = heading.tagName.toLowerCase();
+      
+      // 根据标题级别添加缩进
+      const level = parseInt(heading.tagName.charAt(1));
+      if (level === 3) {
+        li.style.paddingLeft = '16px';
+      } else if (level === 4) {
+        li.style.paddingLeft = '32px';
+      }
+      
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+    
+    // 添加到页面
+    document.body.appendChild(sidebarToc);
+    
+    // 创建移动端目录按钮
+    const mobileToggle = document.createElement('button');
+    mobileToggle.className = 'mobile-toc-toggle';
+    mobileToggle.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+    document.body.appendChild(mobileToggle);
+    
+    // 创建移动端目录弹出层
+    const mobileToc = document.createElement('div');
+    mobileToc.className = 'mobile-toc';
+    mobileToc.innerHTML = `
+      <div class="mobile-toc-header">
+        <span class="mobile-toc-title">目录</span>
+        <button class="mobile-toc-close">&times;</button>
+      </div>
+      <ul>${tocList.innerHTML}</ul>
+    `;
+    document.body.appendChild(mobileToc);
+    
+    // 移动端事件
+    mobileToggle.addEventListener('click', () => {
+      mobileToc.classList.add('active');
+    });
+    
+    mobileToc.querySelector('.mobile-toc-close').addEventListener('click', () => {
+      mobileToc.classList.remove('active');
+    });
+    
+    // 点击移动端目录项关闭弹出层
+    mobileToc.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileToc.classList.remove('active');
+      });
+    });
+    
+    // 滚动监听 - 高亮当前章节
+    function updateActiveHeading() {
+      const scrollPos = window.scrollY + 100;
+      
+      let currentHeading = null;
+      headings.forEach(heading => {
+        const headingTop = heading.offsetTop;
+        if (scrollPos >= headingTop) {
+          currentHeading = heading;
+        }
+      });
+      
+      // 更新高亮状态
+      sidebarToc.querySelectorAll('a').forEach(a => {
+        a.classList.remove('active');
+        if (currentHeading && a.getAttribute('href') === '#' + currentHeading.id) {
+          a.classList.add('active');
+          
+          // 确保高亮项在可视区域内
+          const activeItem = a.closest('li');
+          if (activeItem) {
+            const tocRect = sidebarToc.getBoundingClientRect();
+            const itemRect = activeItem.getBoundingClientRect();
+            
+            if (itemRect.top < tocRect.top || itemRect.bottom > tocRect.bottom) {
+              activeItem.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            }
+          }
+        }
+      });
+      
+      // 同步移动端目录高亮
+      mobileToc.querySelectorAll('a').forEach(a => {
+        a.classList.remove('active');
+        if (currentHeading && a.getAttribute('href') === '#' + currentHeading.id) {
+          a.classList.add('active');
+        }
+      });
+    }
+    
+    // 节流函数
+    function throttle(func, limit) {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+    
+    // 监听滚动事件
+    window.addEventListener('scroll', throttle(updateActiveHeading, 100));
+    
+    // 初始高亮
+    updateActiveHeading();
+    
+    // 平滑滚动
+    sidebarToc.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // 移动端平滑滚动
+    mobileToc.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
+
+  // ========== 初始化所有功能 ==========
+  handleExternalLinks();
+  initImageZoom();
+  initSidebarToc();
+  
+});
+</script>
+
+{{- /* Footer custom content area end */ -}}
