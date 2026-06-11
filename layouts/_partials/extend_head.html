@@ -99,10 +99,30 @@
   }
 
   /* ========== 响应式设计 ========== */
-  @media (max-width: 1200px) {
+  @media (min-width: 1200px) {
+    /* 大屏幕：扩大文章页面宽度 */
+    .post-single .main {
+      max-width: calc(1000px + var(--gap) * 2);
+    }
+    
+    .post-content {
+      margin-right: 280px;
+    }
+  }
+
+  @media (max-width: 1199px) and (min-width: 769px) {
+    /* 中等屏幕：适中的页面宽度 */
     .sidebar-toc {
-      width: 220px;
+      width: 200px;
       right: 10px;
+    }
+    
+    .post-single .main {
+      max-width: calc(800px + var(--gap) * 2);
+    }
+    
+    .post-content {
+      margin-right: 220px;
     }
   }
 
@@ -181,13 +201,6 @@
     cursor: pointer;
     color: var(--secondary);
     padding: 4px 8px;
-  }
-
-  /* ========== 文章内容区域调整 ========== */
-  @media (min-width: 769px) {
-    .post-content {
-      margin-right: 280px;
-    }
   }
 </style>
 
