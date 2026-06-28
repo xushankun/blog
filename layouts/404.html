@@ -1,353 +1,141 @@
-<html><head>
-    <meta charset="utf-8">
-    <title>CSS 404滚动框</title>
+{{- define "main" }}
+<style>
+.notfound-wrap {
+  text-align: center;
+  padding: 4em 1em;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    <style>
-        body {
-            background: #eee;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            font-family: 'Anton', sans-serif;
-            justify-content: center;
-            align-items: center;
-            -webkit-perspective: 1000px;
-            perspective: 1000px;
-        }
+.notfound-code {
+  font-size: clamp(8rem, 22vw, 14rem);
+  font-weight: 900;
+  line-height: 1;
+  background: var(--accent-gradient, linear-gradient(135deg, #6366F1, #A855F7));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+  animation: float 3s ease-in-out infinite;
+}
 
-        div {
-            -webkit-transform-style: preserve-3d;
-            transform-style: preserve-3d;
-        }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
 
-        .rail {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            -webkit-transform: rotateX(-30deg) rotateY(-30deg);
-            transform: rotateX(-30deg) rotateY(-30deg);
-        }
-        .rail .stamp {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #141414;
-            color: #fff;
-            font-size: 7rem;
-        }
-        .rail .stamp:nth-child(1) {
-            -webkit-animation: stampSlide 40000ms -2300ms linear infinite;
-            animation: stampSlide 40000ms -2300ms linear infinite;
-        }
-        .rail .stamp:nth-child(2) {
-            -webkit-animation: stampSlide 40000ms -4300ms linear infinite;
-            animation: stampSlide 40000ms -4300ms linear infinite;
-        }
-        .rail .stamp:nth-child(3) {
-            -webkit-animation: stampSlide 40000ms -6300ms linear infinite;
-            animation: stampSlide 40000ms -6300ms linear infinite;
-        }
-        .rail .stamp:nth-child(4) {
-            -webkit-animation: stampSlide 40000ms -8300ms linear infinite;
-            animation: stampSlide 40000ms -8300ms linear infinite;
-        }
-        .rail .stamp:nth-child(5) {
-            -webkit-animation: stampSlide 40000ms -10300ms linear infinite;
-            animation: stampSlide 40000ms -10300ms linear infinite;
-        }
-        .rail .stamp:nth-child(6) {
-            -webkit-animation: stampSlide 40000ms -12300ms linear infinite;
-            animation: stampSlide 40000ms -12300ms linear infinite;
-        }
-        .rail .stamp:nth-child(7) {
-            -webkit-animation: stampSlide 40000ms -14300ms linear infinite;
-            animation: stampSlide 40000ms -14300ms linear infinite;
-        }
-        .rail .stamp:nth-child(8) {
-            -webkit-animation: stampSlide 40000ms -16300ms linear infinite;
-            animation: stampSlide 40000ms -16300ms linear infinite;
-        }
-        .rail .stamp:nth-child(9) {
-            -webkit-animation: stampSlide 40000ms -18300ms linear infinite;
-            animation: stampSlide 40000ms -18300ms linear infinite;
-        }
-        .rail .stamp:nth-child(10) {
-            -webkit-animation: stampSlide 40000ms -20300ms linear infinite;
-            animation: stampSlide 40000ms -20300ms linear infinite;
-        }
-        .rail .stamp:nth-child(11) {
-            -webkit-animation: stampSlide 40000ms -22300ms linear infinite;
-            animation: stampSlide 40000ms -22300ms linear infinite;
-        }
-        .rail .stamp:nth-child(12) {
-            -webkit-animation: stampSlide 40000ms -24300ms linear infinite;
-            animation: stampSlide 40000ms -24300ms linear infinite;
-        }
-        .rail .stamp:nth-child(13) {
-            -webkit-animation: stampSlide 40000ms -26300ms linear infinite;
-            animation: stampSlide 40000ms -26300ms linear infinite;
-        }
-        .rail .stamp:nth-child(14) {
-            -webkit-animation: stampSlide 40000ms -28300ms linear infinite;
-            animation: stampSlide 40000ms -28300ms linear infinite;
-        }
-        .rail .stamp:nth-child(15) {
-            -webkit-animation: stampSlide 40000ms -30300ms linear infinite;
-            animation: stampSlide 40000ms -30300ms linear infinite;
-        }
-        .rail .stamp:nth-child(16) {
-            -webkit-animation: stampSlide 40000ms -32300ms linear infinite;
-            animation: stampSlide 40000ms -32300ms linear infinite;
-        }
-        .rail .stamp:nth-child(17) {
-            -webkit-animation: stampSlide 40000ms -34300ms linear infinite;
-            animation: stampSlide 40000ms -34300ms linear infinite;
-        }
-        .rail .stamp:nth-child(18) {
-            -webkit-animation: stampSlide 40000ms -36300ms linear infinite;
-            animation: stampSlide 40000ms -36300ms linear infinite;
-        }
-        .rail .stamp:nth-child(19) {
-            -webkit-animation: stampSlide 40000ms -38300ms linear infinite;
-            animation: stampSlide 40000ms -38300ms linear infinite;
-        }
-        .rail .stamp:nth-child(20) {
-            -webkit-animation: stampSlide 40000ms -40300ms linear infinite;
-            animation: stampSlide 40000ms -40300ms linear infinite;
-        }
+.notfound-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.5em;
+  color: var(--primary);
+}
 
-        @-webkit-keyframes stampSlide {
-            0% {
-                -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-                transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-            }
-            100% {
-                -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-                transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-            }
-        }
+.notfound-desc {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin-top: 0.8em;
+  max-width: 480px;
+}
 
-        @keyframes stampSlide {
-            0% {
-                -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-                transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-            }
-            100% {
-                -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-                transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-            }
-        }
-        .world {
-            -webkit-transform: rotateX(-30deg) rotateY(-30deg);
-            transform: rotateX(-30deg) rotateY(-30deg);
-        }
-        .world .forward {
-            position: absolute;
-            -webkit-animation: slide 2000ms linear infinite;
-            animation: slide 2000ms linear infinite;
-        }
-        .world .box {
-            width: 200px;
-            height: 200px;
-            -webkit-transform-origin: 100% 100%;
-            transform-origin: 100% 100%;
-            -webkit-animation: roll 2000ms cubic-bezier(1, 0.01, 1, 1) infinite;
-            animation: roll 2000ms cubic-bezier(1, 0.01, 1, 1) infinite;
-        }
-        .world .box .wall {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid #fafafa;
-            box-sizing: border-box;
-        }
-        .world .box .wall::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            font-size: 7rem;
-        }
-        .world .box .wall:nth-child(1) {
-            -webkit-transform: translateZ(100px);
-            transform: translateZ(100px);
-        }
-        .world .box .wall:nth-child(2) {
-            -webkit-transform: rotateX(180deg) translateZ(100px);
-            transform: rotateX(180deg) translateZ(100px);
-        }
-        .world .box .wall:nth-child(3) {
-            -webkit-transform: rotateX(90deg) translateZ(100px);
-            transform: rotateX(90deg) translateZ(100px);
-        }
-        .world .box .wall:nth-child(3)::before {
-            -webkit-transform: rotateX(180deg) rotateZ(90deg) translateZ(-1px);
-            transform: rotateX(180deg) rotateZ(90deg) translateZ(-1px);
-            -webkit-animation: zeroFour 4000ms -2000ms linear infinite;
-            animation: zeroFour 4000ms -2000ms linear infinite;
-        }
-        .world .box .wall:nth-child(4) {
-            -webkit-transform: rotateX(-90deg) translateZ(100px);
-            transform: rotateX(-90deg) translateZ(100px);
-        }
-        .world .box .wall:nth-child(4)::before {
-            -webkit-transform: rotateX(180deg) rotateZ(-90deg) translateZ(-1px);
-            transform: rotateX(180deg) rotateZ(-90deg) translateZ(-1px);
-            -webkit-animation: zeroFour 4000ms -2000ms linear infinite;
-            animation: zeroFour 4000ms -2000ms linear infinite;
-        }
-        .world .box .wall:nth-child(5) {
-            -webkit-transform: rotateY(90deg) translateZ(100px);
-            transform: rotateY(90deg) translateZ(100px);
-        }
-        .world .box .wall:nth-child(5)::before {
-            -webkit-transform: rotateX(180deg) translateZ(-1px);
-            transform: rotateX(180deg) translateZ(-1px);
-            -webkit-animation: zeroFour 4000ms linear infinite;
-            animation: zeroFour 4000ms linear infinite;
-        }
-        .world .box .wall:nth-child(6) {
-            -webkit-transform: rotateY(-90deg) translateZ(100px);
-            transform: rotateY(-90deg) translateZ(100px);
-        }
-        .world .box .wall:nth-child(6)::before {
-            -webkit-transform: rotateX(180deg) rotateZ(180deg) translateZ(-1px);
-            transform: rotateX(180deg) rotateZ(180deg) translateZ(-1px);
-            -webkit-animation: zeroFour 4000ms linear infinite;
-            animation: zeroFour 4000ms linear infinite;
-        }
+.notfound-actions {
+  margin-top: 2em;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-        @-webkit-keyframes zeroFour {
-            0% {
-                content: '4';
-            }
-            100% {
-                content: '0';
-            }
-        }
+.notfound-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-        @keyframes zeroFour {
-            0% {
-                content: '4';
-            }
-            100% {
-                content: '0';
-            }
-        }
-        @-webkit-keyframes roll {
-            0% {
-                -webkit-transform: rotateZ(0deg);
-                transform: rotateZ(0deg);
-            }
-            85% {
-                -webkit-transform: rotateZ(90deg);
-                transform: rotateZ(90deg);
-            }
-            87% {
-                -webkit-transform: rotateZ(88deg);
-                transform: rotateZ(88deg);
-            }
-            90% {
-                -webkit-transform: rotateZ(90deg);
-                transform: rotateZ(90deg);
-            }
-            100% {
-                -webkit-transform: rotateZ(90deg);
-                transform: rotateZ(90deg);
-            }
-        }
-        @keyframes roll {
-            0% {
-                -webkit-transform: rotateZ(0deg);
-                transform: rotateZ(0deg);
-            }
-            85% {
-                -webkit-transform: rotateZ(90deg);
-                transform: rotateZ(90deg);
-            }
-            87% {
-                -webkit-transform: rotateZ(88deg);
-                transform: rotateZ(88deg);
-            }
-            90% {
-                -webkit-transform: rotateZ(90deg);
-                transform: rotateZ(90deg);
-            }
-            100% {
-                -webkit-transform: rotateZ(90deg);
-                transform: rotateZ(90deg);
-            }
-        }
-        @-webkit-keyframes slide {
-            0% {
-                -webkit-transform: translateX(0);
-                transform: translateX(0);
-            }
-            100% {
-                -webkit-transform: translateX(-200px);
-                transform: translateX(-200px);
-            }
-        }
-        @keyframes slide {
-            0% {
-                -webkit-transform: translateX(0);
-                transform: translateX(0);
-            }
-            100% {
-                -webkit-transform: translateX(-200px);
-                transform: translateX(-200px);
-            }
-        }
-    </style>
-</head>
-<body>
+.notfound-btn.primary {
+  background: var(--accent-gradient, linear-gradient(135deg, #6366F1, #A855F7));
+  color: #fff;
+}
 
-<div class="rail">
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
-    <div class="stamp four">4</div>
-    <div class="stamp zero">0</div>
+.notfound-btn.secondary {
+  background: var(--entry);
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
+.notfound-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
+}
+
+.notfound-suggest {
+  margin-top: 3em;
+  width: 100%;
+  max-width: 720px;
+}
+
+.notfound-suggest h3 {
+  font-size: 1rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1em;
+}
+
+.notfound-suggest ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.notfound-suggest li a {
+  display: block;
+  padding: 12px 16px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 0.95rem;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.notfound-suggest li a:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+</style>
+
+<div class="notfound-wrap">
+  <div class="notfound-code">404</div>
+  <h1 class="notfound-title">页面去喝茶了 ☕</h1>
+  <p class="notfound-desc">你访问的链接可能已经搬家、删除，或者你输错了路径。<br>不如逛逛下面这些地方？</p>
+
+  <div class="notfound-actions">
+    <a href="/" class="notfound-btn primary">🏠 回到首页</a>
+    <a href="/search/" class="notfound-btn secondary">🔍 搜索文章</a>
+    <a href="/archives/" class="notfound-btn secondary">📚 浏览归档</a>
+  </div>
+
+  <div class="notfound-suggest">
+    <h3>📖 最新文章</h3>
+    <ul>
+      {{- range first 6 (where site.RegularPages "Type" "posts") }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
 </div>
-<div class="world">
-    <div class="forward">
-        <div class="box">
-            <div class="wall"></div>
-            <div class="wall"></div>
-            <div class="wall"></div>
-            <div class="wall"></div>
-            <div class="wall"></div>
-            <div class="wall"></div>
-        </div>
-    </div>
-</div>
-
-
-
-</body></html>
+{{- end }}

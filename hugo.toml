@@ -70,16 +70,29 @@ pagination.pagerSize = 10
 #    crossorigin = "anonymous"
 
   [params.homeInfoParams]
-    Title = "Hi there \U0001F44B"
-    Content = "欢迎来到我的博客 — 一名前端开发工程师的技术与生活记录"
+    Title = "Hi there 👋 我是 Shankun"
+    Content = """
+前端工程师 / 工具控 / 文学爱好者 / 业余 quant
+
+这里记录我的技术笔记、AI 行业观察、A 股市场跟踪，以及偶尔的诗与思考。
+
+[👉 浏览全部文章](/posts/) · [🗂 按分类查看](/categories/) · [🔍 站内搜索](/search/) · [👤 关于我](/about/)
+"""
 
   [[params.socialIcons]]
     name = "github"
+    title = "GitHub"
     url = "https://github.com/xushankun"
 
   [[params.socialIcons]]
     name = "rss"
-    url = "index.xml"
+    title = "RSS 订阅"
+    url = "/index.xml"
+
+  [[params.socialIcons]]
+    name = "email"
+    title = "Email"
+    url = "mailto:xushankun@foxmail.com"
 
   [params.assets]
     disableHLJS = false
