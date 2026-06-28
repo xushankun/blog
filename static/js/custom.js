@@ -162,11 +162,36 @@
     });
   }
 
+  // ========== 4. 阅读进度条（仅文章页） ==========
+  function initReadingProgress() {
+    const article = document.querySelector('.post-single .post-content');
+    if (!article) return;
+
+    const bar = document.createElement('div');
+    bar.className = 'reading-progress';
+    document.body.appendChild(bar);
+
+    function update() {
+      const rect = article.getBoundingClientRect();
+      const articleTop = rect.top + window.scrollY;
+      const articleHeight = article.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const scrolled = window.scrollY - articleTop + viewportHeight * 0.3;
+      const total = articleHeight - viewportHeight * 0.3;
+      const percent = Math.max(0, Math.min(100, (scrolled / total) * 100));
+      bar.style.width = percent + '%';
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
   // ========== 初始化 ==========
   function init() {
     handleExternalLinks();
     initImageZoom();
     initSidebarToc();
+    initReadingProgress();
   }
 
   // <script defer> 保证 DOM 已就绪，但保留兼容性
