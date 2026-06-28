@@ -1,5 +1,6 @@
 ---
 title: "nginx 反向代理--解决前端跨域问题"
+description: "浏览器同源策略造成的，所有支持javascript的浏览器都支持这个策略，【这里不多说了】 Nginx (engine x) 是一个高性能的HTTP和反向代理服务【百度百科】 当我们调试前端页面的时候，浏览器报出跨域【即接口与本地服务器不在同一个域内】 最后 ctrl+s保存 双…"
 date: 2018-10-18T15:28:00+08:00
 author: "Xu Shan Kun"
 draft: false

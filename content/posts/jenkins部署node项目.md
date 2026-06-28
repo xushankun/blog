@@ -1,5 +1,6 @@
 ---
 title: "jenkins搭建部署node项目"
+description: "centos搭建jenkins 实现github提交代码后自动部署项目 下载git命令:wget https://www.kernel.org/pub/software/scm/git/git-2.8.3.tar.gz //选择一个目录后执行，我的是/usr/local/git…"
 date: 2019-03-26T17:19:00+08:00
 author: "Xu Shan Kun"
 draft: false

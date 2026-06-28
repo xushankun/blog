@@ -1,5 +1,6 @@
 ---
 title: "bMAP简单使用【百度地图API】"
+description: "申请百度地图api key 【需要实名认证】 下面的变量 site 获取到当前坐标的 省 市 区 街道 街道号"
 date: 2018-05-04T16:28:00+08:00
 author: "Xu Shan Kun"
 draft: false

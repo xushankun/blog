@@ -1,5 +1,6 @@
 ---
 title: "npm包的发布"
+description: "去npm官网注册帐号 cd shankun npm init //初始化一个package.json 默认包名称 【一定得是npm库里不存在的，可以去npm官网查询】 描述 版本号 入口文件(index.js) 默认 关键词 作者 回车 初始化OK 【文件夹shankun下多了一…"
 date: 2018-09-12T13:20:00+08:00
 author: "Xu Shan Kun"
 draft: false

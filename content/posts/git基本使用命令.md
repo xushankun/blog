@@ -1,5 +1,6 @@
 ---
 title: "git基本使用命令"
+description: "工作区→暂存区→本地仓库→远程仓库 把所有文件放入 把所有文件从提交进； 把所有文件从推送进。 git相比于svn等传统的版本管理工具，多了一个的概念 工作区（Working Area） 暂存区（State） 本地仓库（Local Repository） 远程仓库 （Remote…"
 date: 2018-03-09T10:02:00+08:00
 author: "Xu Shan Kun"
 draft: false

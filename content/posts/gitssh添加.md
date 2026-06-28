@@ -1,5 +1,6 @@
 ---
 title: "git ssh 添加"
+description: "1.打开git bash 2.配置git的name和email 然后回车，然后会提示输入2次密码，密钥生成。 4.将密钥添加到ssh-agent 5.登陆github，添加SSH将idrsa.pub文件的内容添加到github 找到系统用户【当前系统用户】，.ssh 里的 idr…"
 date: 2018-07-12T20:03:00+08:00
 author: "shankun"
 draft: false

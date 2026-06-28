@@ -1,5 +1,6 @@
 ---
 title: "vue+axios处理流文件图片"
+description: "vue axios 后端接口返回一个流文件图片，前端base64解析直接展示"
 date: 2019-07-22T12:27:00+08:00
 author: "Xu Shan Kun"
 draft: false

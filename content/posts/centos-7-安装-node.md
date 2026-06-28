@@ -1,5 +1,6 @@
 ---
 title: "centos 7 安装 node"
+description: "centos7.x安装node 1.选择安装目录 2.官网选择最新版本Linux Binaries 64-bit 【二进制的版本】，右键复制链接地址 命令行执行下载 4.重命名为node 5.配置环境变量 6.在文件最后面添加 7.保存退出（:wq）执行命令是更改生效 MobaX…"
 date: 2018-09-03T14:42:00+08:00
 author: "Xu Shan Kun"
 draft: false

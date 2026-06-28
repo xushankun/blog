@@ -1,5 +1,6 @@
 ---
 title: "关于@touchmove.prevent"
+description: "在出现弹窗时，禁止滑动弹窗后面的主体页面 移动端的屏幕滑动，实际上就是touchmove事件的默认行为 在冒泡过程中任何一层阻止这个默认行为，都可以阻止屏幕滑动 导致问题：如果在点击屏幕的时候手指滑动的话，是不会触发click事件的。"
 date: 2019-01-25T13:44:00+08:00
 author: "Xu Shan Kun"
 draft: false

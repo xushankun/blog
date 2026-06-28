@@ -1,5 +1,6 @@
 ---
 title: "JS生成随机字符串【字母数字】"
+description: "JS生成随机字符串，可指定长度或范围，内容数组自定义 1.生成3-32位随机串：randomWord(true, 3, 32) 2.生成43位随机串：randomWord(false, 43)"
 date: 2018-09-07T11:31:00+08:00
 author: "Xu Shan Kun"
 draft: false

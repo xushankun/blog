@@ -1,5 +1,6 @@
 ---
 title: "NPM正确使用姿势"
+description: "Node.js：https://nodejs.org/zh-cn/ 淘宝NPM：https://npm.taobao.org/ 包括更改默认的C盘为其它盘【所有npm全局包的根目录】，以及npm，cnpm环境变量的配置 安装教程：https://www.cnblogs.com/y…"
 date: 2018-03-07T12:10:00+08:00
 author: "shankun"
 draft: false

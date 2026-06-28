@@ -27,8 +27,9 @@ pagination.pagerSize = 10
 [params]
   env = "production"
   title = "我是文盲我怕谁K"
-  description = "web前端开发"
-  keywords = ["前端", "JavaScript", "Vue", "Hexo", "Hugo"]
+  description = "记录 A 股每日复盘、AI 行业要闻、前端工程与服务器运维心得 — 资深前端架构师 xushankun 的独立技术博客。"
+  keywords = ["A股日报", "AI日报", "前端开发", "Vue", "Hugo", "PaperMod", "服务器运维", "技术博客", "shankun"]
+  images = ["/og-image.png"]
   author = "Xu Shan Kun"
   defaultTheme = "auto"
   disableThemeToggle = false

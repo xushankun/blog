@@ -1,5 +1,6 @@
 ---
 title: "git配置多账号登录不同项目"
+description: "我们做项目时会有自己的github账号，和公司的git账号。 本文以配置github.com账号、码云账号以及公司git账号，即在Windows环境下配置Git多账号的使用 1.首先进入.ssh文件夹:右键Git Bash Here 2.执行命令 ssh-keygen -t rs…"
 date: 2019-02-12T09:31:00+08:00
 author: "Xu Shan Kun"
 draft: false

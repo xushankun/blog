@@ -1,5 +1,6 @@
 ---
 title: "github中fork的使用"
+description: "在Github上如果看到有很不错的项目和作品，一般我们可以进行三种操作：那就是watch，star和fork watch就是关注repo的动态 star则类似社交网站的点赞，收藏，like等 fork就是讲别人的项目拷贝一份给自己，new一个新的分支（Branch）出来，你pus…"
 date: 2018-12-13T10:01:00+08:00
 author: "Xu Shan Kun"
 draft: false

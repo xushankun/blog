@@ -1,5 +1,6 @@
 ---
 title: "终端神器Mobaxterm【拖拽式上传】"
+description: "ω゜)=☞：百度云，提取码：ans9 1.点击session 2.选择SSH，点击OK 左侧目录为服务器根目录 可拖拽式上传文件，右侧可命令行输入操作"
 date: 2019-03-07T15:45:00+08:00
 author: "Xu Shan Kun"
 draft: false
