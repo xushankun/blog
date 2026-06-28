@@ -95,7 +95,7 @@ pagination.pagerSize = 10
     distance = 1000
     threshold = 0.4
     minMatchCharLength = 0
-    keys = ["title", "permalink", "summary", "content"]
+    keys = ["title", "permalink", "summary", "tags"]
 
 [menu]
   [[menu.main]]
@@ -142,7 +142,7 @@ pagination.pagerSize = 10
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    lineNos = true
+    lineNos = false
     style = "monokai"
     noClasses = false
   [markup.goldmark.renderer]

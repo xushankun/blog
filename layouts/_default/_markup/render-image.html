@@ -1,0 +1,3 @@
+{{- /* 自定义图片渲染 — 添加 lazy loading 和 async decoding
+     文档: https://gohugo.io/render-hooks/images/ */ -}}
+<img loading="lazy" decoding="async" src="{{ .Destination | safeURL }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} />
