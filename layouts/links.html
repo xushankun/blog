@@ -1,0 +1,84 @@
+{{- define "main" }}
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- with .Description }}
+    <div class="post-description">{{ . }}</div>
+    {{- end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+
+    {{- $sections := slice
+      (dict
+        "title"  "中文媒体"
+        "desc"   "墙内可达，节奏快，可读性强"
+        "items"  (slice
+          (dict "name" "机器之心"   "url" "https://www.jiqizhixin.com"           "tag" "技术深度"  "desc" "国内顶流，论文解读 + 行业要闻并重")
+          (dict "name" "量子位"     "url" "https://www.qbitai.com"               "tag" "行业动态"  "desc" "融资 / 产品发布 / 大模型动态")
+          (dict "name" "36氪 AI"    "url" "https://36kr.com/information/AI"      "tag" "创投视角"  "desc" "估值、融资、商业化最全")
+          (dict "name" "APPSO"      "url" "https://www.appso.com.cn"             "tag" "应用评测"  "desc" "爱范儿团队，AI 工具评测，配图精致")
+          (dict "name" "新智元"     "url" "https://hub.baai.ac.cn/users/new-intelligence" "tag" "综合资讯" "desc" "覆盖广，量大")
+          (dict "name" "AI 科技评论" "url" "https://www.aitechreview.com"         "tag" "学产结合"  "desc" "雷锋网旗下，学术 + 产业")
+          (dict "name" "InfoQ AI"   "url" "https://www.infoq.cn/topic/AI"        "tag" "技术落地"  "desc" "开发者视角，工程实践")
+          (dict "name" "虎嗅 AI"    "url" "https://www.huxiu.com/channel/105.html" "tag" "商业评论" "desc" "深度评论，行业观察")
+        )
+      )
+      (dict
+        "title"  "国际媒体"
+        "desc"   "英文一手信源（国内多数可达）"
+        "items"  (slice
+          (dict "name" "The Decoder"           "url" "https://the-decoder.com"                                         "tag" "快讯聚合" "desc" "AI 版的 The Verge，节奏快")
+          (dict "name" "TechCrunch AI"         "url" "https://techcrunch.com/category/artificial-intelligence/"        "tag" "创业新闻" "desc" "融资 + 创业动态最全")
+          (dict "name" "VentureBeat AI"        "url" "https://venturebeat.com/category/ai/"                            "tag" "企业动向" "desc" "B 端视角")
+          (dict "name" "MIT Technology Review" "url" "https://www.technologyreview.com/topic/artificial-intelligence/" "tag" "深度评论" "desc" "权威媒体，质量极高")
+          (dict "name" "Wired AI"              "url" "https://www.wired.com/tag/artificial-intelligence/"              "tag" "文化视角" "desc" "可读性好，叙事见长")
+          (dict "name" "AI News"               "url" "https://www.artificialintelligence-news.com"                     "tag" "企业 AI"  "desc" "B2B / 企业落地")
+        )
+      )
+      (dict
+        "title"  "论文 / 社区"
+        "desc"   "一手研究信号"
+        "items"  (slice
+          (dict "name" "Hugging Face Papers"   "url" "https://huggingface.co/papers"          "tag" "精选论文" "desc" "信噪比比 arXiv 好，带社区讨论")
+          (dict "name" "arXiv cs.AI"           "url" "https://arxiv.org/list/cs.AI/recent"    "tag" "原始论文" "desc" "每日最新提交")
+          (dict "name" "Papers With Code"      "url" "https://paperswithcode.com/latest"      "tag" "论文+代码" "desc" "论文 / 代码 / 数据集对照")
+          (dict "name" "OpenReview"            "url" "https://openreview.net/group?id=NeurIPS.cc" "tag" "顶会评审" "desc" "可看公开 review")
+        )
+      )
+      (dict
+        "title"  "行业 KOL"
+        "desc"   "X / 个人博客 / 播客（部分需梯子）"
+        "items"  (slice
+          (dict "name" "AK on X"          "url" "https://x.com/_akhaliq"      "tag" "每日论文"  "desc" "每日精选最重要的论文")
+          (dict "name" "Andrej Karpathy"  "url" "https://x.com/karpathy"      "tag" "技术 KOL" "desc" "OpenAI / Tesla 前核心")
+          (dict "name" "Sebastian Raschka" "url" "https://x.com/rasbt"        "tag" "LLM 实战" "desc" "教学与工程视角")
+          (dict "name" "Lex Fridman"      "url" "https://lexfridman.com"      "tag" "长访谈"   "desc" "AI 人物长访谈")
+        )
+      )
+    }}
+
+    <div class="links-page">
+      {{- range $sections }}
+      <section class="links-section">
+        <h2 class="links-section-title">{{ .title }}</h2>
+        <p class="links-section-desc">{{ .desc }}</p>
+        <div class="links-grid">
+          {{- range .items }}
+          <a class="link-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            <div class="link-card-head">
+              <span class="link-name">{{ .name }}</span>
+              <span class="link-tag">{{ .tag }}</span>
+            </div>
+            <div class="link-desc">{{ .desc }}</div>
+            <div class="link-host">{{ replaceRE "^https?://" "" .url | replaceRE "/.*$" "" }}</div>
+          </a>
+          {{- end }}
+        </div>
+      </section>
+      {{- end }}
+    </div>
+  </div>
+</article>
+{{- end }}

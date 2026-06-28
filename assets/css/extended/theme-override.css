@@ -1017,3 +1017,122 @@ a, button, .post-entry, .pagination a, .entry-tags a, .tags a, img, pre, blockqu
 :root[data-theme="dark"] .post-content :not(pre) > code {
   color: var(--accent);
 }
+
+/* ============================================================
+   Links 页（AI 资讯导航）
+   ============================================================ */
+.links-page {
+  margin-top: 1.5rem;
+}
+
+.links-section {
+  margin-bottom: 2.5rem;
+}
+
+.links-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  padding-left: 0.65rem;
+  border-left: 4px solid var(--primary);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border-left-color: #6366f1;
+}
+
+.links-section-desc {
+  color: var(--secondary);
+  font-size: 0.88rem;
+  margin: 0 0 1rem 0.6rem;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.link-card {
+  display: block;
+  padding: 0.95rem 1rem;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none !important;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  position: relative;
+}
+
+.link-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  border-color: transparent;
+  box-shadow: 0 10px 24px -8px rgba(99, 102, 241, 0.28);
+}
+
+.link-card:hover::before {
+  opacity: 1;
+}
+
+.link-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.link-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--primary);
+}
+
+.link-tag {
+  font-size: 0.7rem;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dark .link-tag {
+  background: rgba(139, 92, 246, 0.2);
+  color: #a5a3f5;
+}
+
+.link-desc {
+  color: var(--secondary);
+  font-size: 0.84rem;
+  line-height: 1.55;
+  margin-bottom: 0.55rem;
+}
+
+.link-host {
+  color: var(--tertiary);
+  font-size: 0.72rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 540px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+}

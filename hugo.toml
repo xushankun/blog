@@ -148,6 +148,12 @@ pagination.pagerSize = 10
     weight = 50
 
   [[menu.main]]
+    identifier = "links"
+    name = "AI 资讯"
+    url = "/links/"
+    weight = 55
+
+  [[menu.main]]
     identifier = "about"
     name = "关于"
     url = "/about/"
