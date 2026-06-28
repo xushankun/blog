@@ -8,8 +8,7 @@ tags:
   - "部署"
   - "运维"
   - "自动化"
-categories:
-  - "服务器"
+categories: ["服务器运维"]
 ---
 ### 目标
 -	centos搭建jenkins

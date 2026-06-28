@@ -6,9 +6,7 @@ draft: false
 tags:
   - "git"
   - "Github"
-categories:
-  - "工具"
-  - ""
+categories: ["工具效率"]
 ---
 在Github上如果看到有很不错的项目和作品，一般我们可以进行三种操作：那就是**watch**，**star**和**fork**
 <!--more-->

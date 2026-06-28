@@ -5,9 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "git"
-categories:
-  - "工具"
-  - ""
+categories: ["工具效率"]
 ---
 ##	git四个阶段的撤销更改
 ###	基本概念

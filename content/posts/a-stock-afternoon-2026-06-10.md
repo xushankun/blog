@@ -8,8 +8,7 @@ tags:
   - "财经"
   - "股市"
   - "收盘"
-categories:
-  - "财经日报"
+categories: ["财经日报"]
 description: "2026年6月10日A股收盘行情及今日热门财经新闻汇总"
 ---
 

@@ -7,8 +7,7 @@ tags:
   - "宝塔"
   - "https"
   - "nginx"
-categories:
-  - "服务器"
+categories: ["服务器运维"]
 ---
 #### 注册宝塔账号并安装宝塔
 - [注册账号地址](https://www.bt.cn/register.html)【后面会用到】

@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "touch"
-categories:
-  - "H5"
+categories: ["前端开发"]
 ---
 ### 1.需求
 在出现弹窗时，禁止滑动弹窗后面的主体页面

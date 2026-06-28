@@ -8,9 +8,7 @@ tags:
   - "ftp"
   - "sftp"
   - "linux"
-categories:
-  - ""
-  - "服务器"
+categories: ["服务器运维"]
 ---
 ### 给大佬递上链接
 ┏ (゜ω゜)=☞：[百度云](https://pan.baidu.com/s/1CBzMMWiDZvwL8Lg4Q8RbRw)，提取码：ans9

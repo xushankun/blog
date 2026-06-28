@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "百度API"
-categories:
-  - "前端"
+categories: ["前端开发"]
 ---
 #### 第一步
 申请百度地图api  key 【需要实名认证】

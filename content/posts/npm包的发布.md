@@ -6,8 +6,7 @@ draft: false
 tags:
   - "node"
   - "npm"
-categories:
-  - "工具"
+categories: ["工具效率"]
 ---
 ###	首先去官网注册npm帐号
 [去npm官网注册帐号](https://www.npmjs.com/)

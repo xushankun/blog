@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "Nginx"
-categories:
-  - "服务器"
+categories: ["服务器运维"]
 ---
 ###	跨域
 浏览器同源策略造成的，所有支持javascript的浏览器都支持这个策略，【这里不多说了】

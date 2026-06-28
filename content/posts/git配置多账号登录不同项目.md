@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "git"
-categories:
-  - "工具"
+categories: ["工具效率"]
 ---
 ### 需求
 我们做项目时会有自己的github账号，和公司的git账号。

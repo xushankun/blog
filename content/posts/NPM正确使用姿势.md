@@ -6,9 +6,7 @@ draft: false
 tags:
   - "node"
   - "npm"
-categories:
-  - "工具"
-  - ""
+categories: ["工具效率"]
 ---
 ###	npm、cnpm 安装
 -	Node.js：[https://nodejs.org/zh-cn/](https://nodejs.org/zh-cn/)

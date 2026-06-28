@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "javascript"
-categories:
-  - "前端"
+categories: ["前端开发"]
 ---
 ###	说明
 JS生成随机字符串，可指定长度或范围，内容数组自定义

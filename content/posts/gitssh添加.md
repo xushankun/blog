@@ -5,8 +5,7 @@ author: "shankun"
 draft: false
 tags:
   - "git"
-categories:
-  - "工具"
+categories: ["工具效率"]
 ---
 1.打开git bash
 

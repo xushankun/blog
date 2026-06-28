@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "node"
-categories:
-  - "服务器"
+categories: ["服务器运维"]
 ---
 ###	友情链接【偷懒一波，哈哈】
 

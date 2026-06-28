@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "axios"
-categories:
-  - "前端"
+categories: ["前端开发"]
 ---
 #### 说明
 vue axios 后端接口返回一个流文件图片，前端base64解析直接展示

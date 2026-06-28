@@ -5,8 +5,7 @@ author: "Xu Shan Kun"
 draft: false
 tags:
   - "javascript"
-categories:
-  - "前端"
+categories: ["前端开发"]
 ---
 ##	防抖
 多次事件触发后，事件处理函数只执行一次，并且是在触发操作结束时执行
