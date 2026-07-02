@@ -1,7 +1,7 @@
 ---
 title: "A股午间收盘速报 | 2026年7月2日"
 description: "今日A股三大指数全线下跌，半导体设备板块领跌，钨、黄金等避险板块逆势走强"
-date: 2026-07-02
+date: 2026-07-02T11:30:00+08:00
 author: Xu Shan Kun
 draft: false
 tags: [A股, 财经, 股市, 收盘]
