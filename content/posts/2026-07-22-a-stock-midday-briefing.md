@@ -1,3 +1,13 @@
+---
+title: A股午间收盘速报 | 2026年7月22日
+description: 今日A股午间收盘
+date: 2026-07-22T11:30:00+08:00
+author: Xu Shan Kun
+draft: false
+tags: [A股, 财经, 股市, 午间]
+categories: [财经日报]
+---
+
 # A股午间收盘速报
 
 ## 📊 市场概览
