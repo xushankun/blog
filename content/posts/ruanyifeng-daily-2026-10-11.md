@@ -1,7 +1,7 @@
 ---
 title: "科技爱好者周刊（第 414 期）：Jev 决策模型有什么用 | 2026年10月11日"
 description: "当模型不再回答问题，只回答概率——Jev 决策模型与可量化的 AI"
-date: "2026-10-11T09:35:00+08:00"
+date: "2026-10-11T09:36:00+08:00"
 author: Xu Shan Kun
 draft: false
 tags: [科技, AI, 周刊]
