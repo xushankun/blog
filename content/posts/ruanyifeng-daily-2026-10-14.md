@@ -1,7 +1,7 @@
 ---
 title: "科技日志 | 2026年10月14日"
 description: "当 AI 把评估压缩成一个分数，没法申诉的裁决就来了"
-date: "2026-10-14T09:30:00+08:00"
+date: "2026-10-14T10:10:00+08:00"
 author: Xu Shan Kun
 draft: false
 tags: [科技, AI, 周报]
