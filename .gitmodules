@@ -1,3 +1,6 @@
 [submodule "themes/PaperMod"]
 	path = themes/PaperMod
 	url = https://github.com/adityatelange/hugo-PaperMod.git
+[submodule "vendor/HowToLiveBetter"]
+	path = vendor/HowToLiveBetter
+	url = https://github.com/eternity4719/HowToLiveBetter.git
