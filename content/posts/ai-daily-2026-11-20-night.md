@@ -91,6 +91,6 @@ categories: [AI日报]
 摘要： RoboScience 发布全球首个原生 3D 动力学预测世界模型 WorldFlow，可根据画面、指令与目标联合预测未来视频与物体三维轨迹，以 144 万条多源样本预训练。在 12 项真机操作任务中成功率由基线 μ₀ 的 11.1% 提升至 66.7%。把物体运动预测显式建模进世界模型，正成为提升机器人操作成功率的主流技术路线之一。
 
 ## 📊 数据来源
-本文新闻来源包括：[IT之家](https://www.ithome.com/)、[AITNT](https://www.aitntnews.com/ainews/zh-CN)、[The Decoder](https://the-decoder.com/)、[量子位](https://www.qbitai.com/) 等科技媒体。
+本文新闻来源包括：[机器之心](https://www.jiqizhixin.com/)、[AITNT](https://www.aitntnews.com/ainews/zh-CN)、[The Decoder](https://the-decoder.com/)、[量子位](https://www.qbitai.com/) 等科技媒体。
 ---
 *本文由 AI 辅助整理，内容经人工审核。*
